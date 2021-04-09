@@ -8,13 +8,15 @@ import { VisitaPageComponent } from './components/visita-page/visita-page.compon
 import { IconsModule } from 'angular-bootstrap-md';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    VisitaPageComponent
+    VisitaPageComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

@@ -27,3 +27,12 @@ p {
 
   background-color: lightgrey;
 }
+
+hr {
+  height:1px;
+  border-width:0;
+  color:gray;
+  margin-right: 500px;
+  margin-left: 500px;
+  background-color: #16c79a;
+}
