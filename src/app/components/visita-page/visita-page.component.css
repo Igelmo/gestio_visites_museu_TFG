@@ -1,0 +1,20 @@
+h1 {
+  color: grey;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-right: 30px;
+}
+
+h4 {
+  color: grey;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-top: 30px;
+  padding-right: 30px;
+}
+
+p {
+  color: dimgrey;
+  padding-bottom: 30px;
+  padding-right: 30px;
+}
