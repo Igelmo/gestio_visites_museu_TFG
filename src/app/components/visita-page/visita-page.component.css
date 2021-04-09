@@ -18,3 +18,12 @@ p {
   padding-bottom: 30px;
   padding-right: 30px;
 }
+
+.img-fluid img{
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  background-color: lightgrey;
+}
