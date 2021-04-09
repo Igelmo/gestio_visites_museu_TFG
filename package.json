@@ -9,8 +9,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "__start__": "nodemon server.js",
-    "start": "ng serve",
+    "start": "nodemon server.js",
+    "__start__": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
