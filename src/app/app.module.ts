@@ -9,6 +9,8 @@ import { IconsModule } from 'angular-bootstrap-md';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,12 @@ import { CalendarComponent } from './components/calendar/calendar.component';
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
-    IconsModule
+    IconsModule,
+
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
