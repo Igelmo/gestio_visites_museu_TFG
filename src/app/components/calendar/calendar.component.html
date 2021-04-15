@@ -7,16 +7,20 @@
     <div class = "col-3">
       <button type="button" class="alert-primary" size="3x" ><i class="fas fa-angle-left" aria-hidden="true"></i></button>
     </div>
-    <div class = "col-3 text-center">
+    <div class = "col-2 text-center">
       <h3>{{ currentDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
     </div>
     <div class = "col-3 text-right">
       <button type="button" class="alert-primary" size="3x" ><i class="fas fa-angle-right" aria-hidden="true"></i></button>
     </div>
+    <div class = "col-3 text-center">
+      <h3 [hidden]="hiddenHours"> Escull hora per al dia {{currentDayClicked.getDate()}} </h3>
+    </div>
   </div>
   <div [ngSwitch]="view">
     <div class="row justify-content-evenly">
-      <div class = "col-10">
+
+      <div class = "col-8">
         <div class="cal-month-view">
           <mwl-calendar-month-view [events]="events"
                                    (dayClicked)="dayClicked($event.day)"
@@ -24,14 +28,15 @@
                                    [viewDate]="currentDate"
                                    [locale]="locale"
                                    [weekStartsOn]="weekStartsOn"
-                                   [excludeDays]=excludeDays >
+                                   [excludeDays]=excludeDays
+                                   (beforeViewRender)="beforeMonthViewRender($event)">
           </mwl-calendar-month-view>
         </div>
       </div>
-      <div class="col-2">
+
+      <div class="col-3">
         <div class="cal-day-view">
-          <mwl-calendar-day-view
-                                 [hidden]="hiddenHours"
+          <mwl-calendar-day-view [hidden]="hiddenHours"
                                  [hourSegmentHeight]="sizeHourRange"
                                  [hourSegments]="lengthVisitsHours"
                                  [viewDate]="currentDayClicked"
@@ -41,6 +46,7 @@
           </mwl-calendar-day-view>
         </div>
       </div>
+
     </div>
   </div>
 </div>
