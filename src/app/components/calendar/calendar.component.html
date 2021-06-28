@@ -22,9 +22,15 @@
 
       <div class = "col-8">
         <div class="cal-month-view">
+          <mwl-calendar-month-cell
+            (highlightDay)="toggleDayHighlight($event.event, true)"
+            (unhighlightDay)="toggleDayHighlight($event.event, false)">
+          </mwl-calendar-month-cell>
+
           <mwl-calendar-month-view [events]="events"
                                    [viewDate]="currentDate"
-                                   (dayClicked)="dayClicked($event.day)"
+                                   [activeDay]="currentDayClicked"
+                                   (dayClicked)="dayClicked($event.day, $event.sourceEvent)"
                                    [refresh] = refresh
                                    *ngSwitchCase="'month'"
                                    [locale]="locale"
@@ -61,7 +67,7 @@
   </div>
 
   <div class="row justify-content-center">
-    <h4 [hidden]="(hiddenHours || hiddenBooking)"> Per a reservar el dia {{currentDayClicked.getDate()}} a les {{currentHourClicked.getHours()}} </h4>
+    <h4 [hidden]="(hiddenHours || hiddenBooking)"> Per a reservar el dia {{currentDayClicked.toLocaleString().split(" ")[0]}} a les {{currentHourClicked.toLocaleString().split(" ")[1]}} </h4>
   </div>
 
 </div>

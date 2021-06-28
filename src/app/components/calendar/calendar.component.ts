@@ -1,7 +1,13 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import {CalendarDayViewComponent, CalendarMonthViewBeforeRenderEvent, CalendarMonthViewDay, CalendarView} from 'angular-calendar';
+import {
+  CalendarDayViewComponent,
+  CalendarEventTimesChangedEvent,
+  CalendarMonthViewBeforeRenderEvent,
+  CalendarMonthViewDay,
+  CalendarView
+} from 'angular-calendar';
 import { CalendarEvent } from 'angular-calendar';
 import {getCalendar} from '@angular/material/datepicker/testing/datepicker-trigger-harness-base';
 import {Subject} from 'rxjs';
@@ -57,6 +63,7 @@ export class CalendarComponent implements OnInit {
     }
     this.currentDayClicked = date;
     this.refreshView();
+    // date..style.backgroundColor = '#16c79a';
   }
 
   hourClicked({date}: { date: Date}): void {
@@ -70,8 +77,9 @@ export class CalendarComponent implements OnInit {
   }
 
   refreshView(): void {
-    this.refresh.next();
+    this.colorCell = '#16c79a';
     this.colorCell = this.colorCell === 'cal-day-selected' ? 'cal-day-deselected' : 'cal-day-selected';
+    this.refresh.next();
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
@@ -85,6 +93,16 @@ export class CalendarComponent implements OnInit {
     });
   }
 
+  toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
+    this.view.days.forEach((day) => {
+      if (isHighlighted && day.events.indexOf(event) > -1) {
+        day.backgroundColor =
+          (event.color && event.color.secondary) || '#D1E8FF';
+      } else {
+        delete day.backgroundColor;
+      }
+    });
+  }
 
 
 }
