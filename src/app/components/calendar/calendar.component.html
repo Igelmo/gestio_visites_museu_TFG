@@ -22,11 +22,6 @@
 
       <div class = "col-8">
         <div class="cal-month-view">
-          <mwl-calendar-month-cell
-            (highlightDay)="toggleDayHighlight($event.event, true)"
-            (unhighlightDay)="toggleDayHighlight($event.event, false)">
-          </mwl-calendar-month-cell>
-
           <mwl-calendar-month-view [events]="events"
                                    [viewDate]="currentDate"
                                    [activeDay]="currentDayClicked"
