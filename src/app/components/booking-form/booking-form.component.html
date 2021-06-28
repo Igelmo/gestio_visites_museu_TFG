@@ -1,51 +1,57 @@
 <div class="container">
-  <div class="row justify-content-start">
+  <div class="mb-3 row justify-content-start">
 
     <div class="col-6">
       <label for="nameVisit">Nom del sol·licitant</label>
-      <input type="text" class="form-control" id="nameVisit" placeholder="nom del sol·licitant">
+      <input type="text" class="form-control" id="nameVisit" placeholder="nom del sol·licitant" required>
     </div>
 
     <div class="col-6">
       <label for="SurnamesVisit">Cognoms del sol·licitant</label>
-      <input type="text" class="form-control" id="SurnamesVisit" placeholder="cognoms del sol·licitant">
+      <input type="text" class="form-control" id="SurnamesVisit" placeholder="cognoms del sol·licitant" required>
     </div>
 
   </div>
 
-  <div class="row justify-content-start">
+  <div class="mb-3 row justify-content-start">
 
     <div class="col-6">
       <label for="SchoolVisit">Nom del centre</label>
-      <input type="text" class="form-control" id="SchoolVisit" placeholder="Nom del centre">
+      <input type="text" class="form-control" id="SchoolVisit" placeholder="Nom del centre" required>
     </div>
 
   </div>
 
-  <div class="row justify-content-start">
+  <div class="mb-3 row justify-content-start">
 
     <div class="col-6">
       <label for="emailVisit">Correu electrònic</label>
       <input type="email" class="form-control" id="emailVisit" placeholder="name@example.com">
+      <div class="invalid-feedback">
+        Siusplau, indica un correu electrònic vàlid.
+      </div>
     </div>
     <div class="col-6">
       <label for="phoneVisit">Telèfon</label>
-      <input type="tel" class="form-control" id="phoneVisit" placeholder="">
+      <input type="tel" class="form-control" id="phoneVisit" placeholder="p.e. 123456789" required>
+      <div class="invalid-feedback">
+        Siusplau, indica un número de telèfon vàlid.
+      </div>
     </div>
 
   </div>
 
-  <div class="row justify-content-start">
+  <div class="mb-3 row justify-content-start">
 
     <div class="col-6">
       <label for="NumVisit">Número d'assistents (Màxim 30 persones)</label>
-      <input type="text" class="form-control" id="NumVisit" placeholder="p.e. 25">
+      <input type="number" class="form-control" id="NumVisit" placeholder="p.e. 25" required>
     </div>
 
     <div class="col-6">
       <label for="TypeVisit">Tipus d'assistents</label>
-      <select class="form-select" id="TypeVisit">
-        <option selected>Open this select menu</option>
+      <select class="form-select" id="TypeVisit" required>
+        <option selected> Selecciona el tipus de visita </option>
         <option value="Batxillerat">Batxillerat</option>
         <option value="ESO">ESO</option>
         <option value="Cicle mitjà">Cicle mitjà</option>
@@ -57,16 +63,23 @@
         <option value="Extranger">Extranger</option>
         <option value="Particular">Particular</option>
       </select>
+      <div class="invalid-feedback">
+        Siusplau, selecciona un tipus de visita.
+      </div>
     </div>
 
   </div>
 
-  <div class="row justify-content-start">
+  <div class="mb-3 row justify-content-start">
     <div class="col-6">
       <label for="CommentVisit">Comentaris</label>
-      <input type="text" class="form-control" id="CommentVisit" placeholder="Afegeix algún comentari en cas necessàri.">
+      <textarea class="form-control" id="CommentVisit" placeholder="Afegeix algún comentari en cas necessàri."></textarea>
     </div>
   </div>
 
-
+  <div class="mb-3 row justify-content-center">
+    <button type="button" class="btn btn-primary btn-lg" id="submitButton">Reservar</button>
   </div>
+
+
+</div>
