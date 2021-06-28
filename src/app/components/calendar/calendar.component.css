@@ -9,13 +9,27 @@ h1 {
 .cal-month-view {
   color: grey;
   font-weight: bold;
-  padding: 10px 30px 80px;
+  padding: 10px 30px 80px 30px;
+}
+
+.cal-day-view {
+  color: grey;
+  font-weight: bold;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  padding-left: 30px;
 }
 
 h3 {
   color: grey;
   font-weight: bold;
-  padding-top: 90px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+h4 {
+  color: grey;
+  font-weight: bold;
   padding-bottom: 20px;
 }
 
@@ -26,9 +40,32 @@ button {
   padding-right: 20px;
 }
 
-.cal-day-view {
-  color: grey;
-  font-weight: bold;
-  padding-top: 90px;
-  padding-bottom: 90px;
+.cal-past-days {
+  background-color: lightgrey !important;
+  color: white !important;
+}
+
+.cal-current-day {
+  background-color: #aed581 !important;
+  color: black !important
+}
+
+.cal-day-selected {
+  background-color: #16c79a !important;
+  color: white !important;
+}
+
+
+.cal-day-deselected {
+  background-color: white !important;
+  color: black !important;
+}
+
+hr {
+  height:1px;
+  border-width:0;
+  color:gray;
+  margin-right: 500px;
+  margin-left: 500px;
+  background-color: #16c79a;
 }

@@ -1,17 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import {CalendarView} from 'angular-calendar';
+import {
+  CalendarDayViewComponent,
+  CalendarEventTimesChangedEvent,
+  CalendarMonthViewBeforeRenderEvent,
+  CalendarMonthViewDay,
+  CalendarView
+} from 'angular-calendar';
+import { CalendarEvent } from 'angular-calendar';
+import {getCalendar} from '@angular/material/datepicker/testing/datepicker-trigger-harness-base';
+import {Subject} from 'rxjs';
+import {analyzeAndValidateNgModules} from '@angular/compiler';
 
 registerLocaleData(localeEs);
+
+const RED_CELL: 'mwl-calendar-month-cell' = 'mwl-calendar-month-cell';
+
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  styleUrls: ['./calendar.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class CalendarComponent implements OnInit {
-  viewDate: Date = new Date();
+  private colorCell: string;
+  constructor() { }
+  currentDate = new Date();
   locale = 'es';
   weekStartsOn = '1';
   excludeDays = [6, 0];
@@ -19,14 +37,72 @@ export class CalendarComponent implements OnInit {
   dayEndHour = 17;
   lengthVisitsHours = 1;
   sizeHourRange = 30;
-  hiddenHours = false;
+  hiddenHours = true;
+  hiddenBooking = true;
+  currentDayClicked = new Date();
+  currentHourClicked = new Date();
   view = CalendarView.Month;
-  filterDates = (date: Date): boolean => {
-    return date < this.viewDate;
-  }
-  constructor() { }
+  refresh: Subject<any> = new Subject();
 
-  ngOnInit(): void {
+  events: CalendarEvent[] = [{
+      title: 'Click me',
+      start: new Date(),
+    }
+  ];
+
+  ngOnInit(): void {}
+  onDayEvent({ event }: { event: CalendarEvent }): void {
+    console.log( event);
   }
+  dayClicked({date}: { date: Date}, day: CalendarMonthViewDay): void {
+    if (this.hiddenHours) {
+      this.hiddenHours = false;
+    }
+    if (date <= this.currentDate) {
+      this.hiddenHours = true;
+    }
+    this.currentDayClicked = date;
+    this.refreshView();
+    // date..style.backgroundColor = '#16c79a';
+  }
+
+  hourClicked({date}: { date: Date}): void {
+    if (this.hiddenBooking) {
+      this.hiddenBooking = false;
+    }
+    if (date <= this.currentDate) {
+      this.hiddenBooking = true;
+    }
+    this.currentHourClicked = date;
+  }
+
+  refreshView(): void {
+    this.colorCell = '#16c79a';
+    this.colorCell = this.colorCell === 'cal-day-selected' ? 'cal-day-deselected' : 'cal-day-selected';
+    this.refresh.next();
+  }
+
+  beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
+    body.forEach((day) => {
+      if (day.isPast) {
+        day.cssClass = 'cal-past-days';
+      }
+      if (day.isToday) {
+        day.cssClass = 'cal-current-day';
+      }
+    });
+  }
+
+  toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
+    this.view.days.forEach((day) => {
+      if (isHighlighted && day.events.indexOf(event) > -1) {
+        day.backgroundColor =
+          (event.color && event.color.secondary) || '#D1E8FF';
+      } else {
+        delete day.backgroundColor;
+      }
+    });
+  }
+
 
 }

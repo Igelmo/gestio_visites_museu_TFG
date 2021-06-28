@@ -7,32 +7,47 @@
     <div class = "col-3">
       <button type="button" class="alert-primary" size="3x" ><i class="fas fa-angle-left" aria-hidden="true"></i></button>
     </div>
-    <div class = "col-3 text-center">
-      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
+    <div class = "col-2 text-center">
+      <h3>{{ currentDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
     </div>
     <div class = "col-3 text-right">
       <button type="button" class="alert-primary" size="3x" ><i class="fas fa-angle-right" aria-hidden="true"></i></button>
     </div>
+    <div class = "col-3 text-center">
+      <h3 [hidden]="hiddenHours"> Escull hora per al dia {{currentDayClicked.getDate()}} </h3>
+    </div>
   </div>
   <div [ngSwitch]="view">
     <div class="row justify-content-evenly">
-      <div class = "col-10">
+
+      <div class = "col-8">
         <div class="cal-month-view">
-          <mwl-calendar-month-view *ngSwitchCase="'month'"
-                                   [viewDate]="viewDate"
+          <mwl-calendar-month-cell
+            (highlightDay)="toggleDayHighlight($event.event, true)"
+            (unhighlightDay)="toggleDayHighlight($event.event, false)">
+          </mwl-calendar-month-cell>
+
+          <mwl-calendar-month-view [events]="events"
+                                   [viewDate]="currentDate"
+                                   [activeDay]="currentDayClicked"
+                                   (dayClicked)="dayClicked($event.day, $event.sourceEvent)"
+                                   [refresh] = refresh
+                                   *ngSwitchCase="'month'"
                                    [locale]="locale"
                                    [weekStartsOn]="weekStartsOn"
-                                   [excludeDays]=excludeDays >
+                                   [excludeDays]=excludeDays
+                                   (beforeViewRender)="beforeMonthViewRender($event)">
           </mwl-calendar-month-view>
         </div>
       </div>
-      <div class="col-2">
+
+      <div class="col-3">
         <div class="cal-day-view">
-          <mwl-calendar-day-view
-                                 [hidden]="hiddenHours"
+          <mwl-calendar-day-view [hidden]="hiddenHours"
+                                 (hourSegmentClicked)="hourClicked($event)"
                                  [hourSegmentHeight]="sizeHourRange"
                                  [hourSegments]="lengthVisitsHours"
-                                 [viewDate]="viewDate"
+                                 [viewDate]="currentDayClicked"
                                  [locale]="locale"
                                  [dayStartHour]="dayStartHour"
                                  [dayEndHour]="dayEndHour">
@@ -41,4 +56,18 @@
       </div>
     </div>
   </div>
+</div>
+
+<hr style="" [hidden]="(hiddenHours || hiddenBooking)">
+
+<div class="container">
+
+  <div class="row justify-content-center">
+    <h3 [hidden]="(hiddenHours || hiddenBooking)"> Omple el següent formulari </h3>
+  </div>
+
+  <div class="row justify-content-center">
+    <h4 [hidden]="(hiddenHours || hiddenBooking)"> Per a reservar el dia {{currentDayClicked.toLocaleString().split(" ")[0]}} a les {{currentHourClicked.toLocaleString().split(" ")[1]}} </h4>
+  </div>
+
 </div>
