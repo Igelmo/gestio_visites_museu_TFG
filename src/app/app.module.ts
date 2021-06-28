@@ -11,6 +11,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BookingFormComponent } from './components/booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     HeaderComponent,
     FooterComponent,
     VisitaPageComponent,
-    CalendarComponent
+    CalendarComponent,
+    BookingFormComponent
   ],
   imports: [
     BrowserModule,
