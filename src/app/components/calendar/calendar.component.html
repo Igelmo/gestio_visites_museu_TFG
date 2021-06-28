@@ -23,9 +23,10 @@
       <div class = "col-8">
         <div class="cal-month-view">
           <mwl-calendar-month-view [events]="events"
-                                   (dayClicked)="dayClicked($event.day)"
-                                   *ngSwitchCase="'month'"
                                    [viewDate]="currentDate"
+                                   (dayClicked)="dayClicked($event.day)"
+                                   [refresh] = refresh
+                                   *ngSwitchCase="'month'"
                                    [locale]="locale"
                                    [weekStartsOn]="weekStartsOn"
                                    [excludeDays]=excludeDays
@@ -37,6 +38,7 @@
       <div class="col-3">
         <div class="cal-day-view">
           <mwl-calendar-day-view [hidden]="hiddenHours"
+                                 (hourSegmentClicked)="hourClicked($event)"
                                  [hourSegmentHeight]="sizeHourRange"
                                  [hourSegments]="lengthVisitsHours"
                                  [viewDate]="currentDayClicked"
@@ -46,7 +48,20 @@
           </mwl-calendar-day-view>
         </div>
       </div>
-
     </div>
   </div>
+</div>
+
+<hr style="" [hidden]="(hiddenHours || hiddenBooking)">
+
+<div class="container">
+
+  <div class="row justify-content-center">
+    <h3 [hidden]="(hiddenHours || hiddenBooking)"> Omple el següent formulari </h3>
+  </div>
+
+  <div class="row justify-content-center">
+    <h4 [hidden]="(hiddenHours || hiddenBooking)"> Per a reservar el dia {{currentDayClicked.getDate()}} a les {{currentHourClicked.getHours()}} </h4>
+  </div>
+
 </div>

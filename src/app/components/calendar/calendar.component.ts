@@ -1,8 +1,11 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import {CalendarMonthViewBeforeRenderEvent, CalendarMonthViewDay, CalendarView} from 'angular-calendar';
+import {CalendarDayViewComponent, CalendarMonthViewBeforeRenderEvent, CalendarMonthViewDay, CalendarView} from 'angular-calendar';
 import { CalendarEvent } from 'angular-calendar';
+import {getCalendar} from '@angular/material/datepicker/testing/datepicker-trigger-harness-base';
+import {Subject} from 'rxjs';
+import {analyzeAndValidateNgModules} from '@angular/compiler';
 
 registerLocaleData(localeEs);
 
@@ -14,9 +17,11 @@ const RED_CELL: 'mwl-calendar-month-cell' = 'mwl-calendar-month-cell';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 export class CalendarComponent implements OnInit {
+  private colorCell: string;
   constructor() { }
   currentDate = new Date();
   locale = 'es';
@@ -27,8 +32,11 @@ export class CalendarComponent implements OnInit {
   lengthVisitsHours = 1;
   sizeHourRange = 30;
   hiddenHours = true;
+  hiddenBooking = true;
   currentDayClicked = new Date();
+  currentHourClicked = new Date();
   view = CalendarView.Month;
+  refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [{
       title: 'Click me',
@@ -36,27 +44,47 @@ export class CalendarComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   onDayEvent({ event }: { event: CalendarEvent }): void {
     console.log( event);
   }
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[]}, day: CalendarMonthViewDay): void {
+  dayClicked({date}: { date: Date}, day: CalendarMonthViewDay): void {
     if (this.hiddenHours) {
       this.hiddenHours = false;
     }
     if (date <= this.currentDate) {
       this.hiddenHours = true;
     }
-    // day.cssClass = 'cal-day-selected';
     this.currentDayClicked = date;
+    this.refreshView();
+  }
+
+  hourClicked({date}: { date: Date}): void {
+    if (this.hiddenBooking) {
+      this.hiddenBooking = false;
+    }
+    if (date <= this.currentDate) {
+      this.hiddenBooking = true;
+    }
+    this.currentHourClicked = date;
+  }
+
+  refreshView(): void {
+    this.refresh.next();
+    this.colorCell = this.colorCell === 'cal-day-selected' ? 'cal-day-deselected' : 'cal-day-selected';
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach((day) => {
-      if (day.isPast || day.isToday) {
-        day.cssClass = 'cal-day-selected';
+      if (day.isPast) {
+        day.cssClass = 'cal-past-days';
+      }
+      if (day.isToday) {
+        day.cssClass = 'cal-current-day';
       }
     });
   }
+
+
+
 }
