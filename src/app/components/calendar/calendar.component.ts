@@ -30,6 +30,7 @@ export class CalendarComponent implements OnInit {
   private colorCell: string;
   constructor() { }
   currentDate = new Date();
+  viewDate = new Date();
   locale = 'es';
   weekStartsOn = '1';
   excludeDays = [6, 0];
@@ -91,5 +92,15 @@ export class CalendarComponent implements OnInit {
         day.cssClass = 'cal-current-day';
       }
     });
+  }
+
+  changeToPreviousMonth(): void {
+    this.viewDate.setMonth(this.viewDate.getMonth() - 1);
+    this.refresh.next();
+  }
+
+  changeToNextMonth(): void {
+    this.viewDate.setMonth(this.viewDate.getMonth() + 1);
+    this.refresh.next();
   }
 }

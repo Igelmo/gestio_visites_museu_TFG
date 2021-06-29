@@ -5,13 +5,13 @@
 <div class="container">
   <div class="row justify-content-evenly">
     <div class = "col-3">
-      <button type="button" class="alert-primary" size="3x" ><i class="fas fa-angle-left" aria-hidden="true"></i></button>
+      <button type="button" class="alert-primary" size="3x" id="buttonPrevious" (click)="changeToPreviousMonth()"><i class="fas fa-angle-left" aria-hidden="true"></i></button>
     </div>
     <div class = "col-2 text-center">
-      <h3>{{ currentDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
+      <h3>{{ viewDate.getMonth() }} </h3>
     </div>
     <div class = "col-3 text-right">
-      <button type="button" class="alert-primary" size="3x" ><i class="fas fa-angle-right" aria-hidden="true"></i></button>
+      <button type="button" class="alert-primary" size="3x" id="buttonNext" (click)="changeToNextMonth()"><i class="fas fa-angle-right" aria-hidden="true"></i></button>
     </div>
     <div class = "col-3 text-center">
       <h3 [hidden]="hiddenHours"> Escull hora per al dia {{currentDayClicked.getDate()}} </h3>
@@ -23,11 +23,10 @@
       <div class = "col-8">
         <div class="cal-month-view">
           <mwl-calendar-month-view [events]="events"
-                                   [viewDate]="currentDate"
+                                   [viewDate]="viewDate"
                                    [activeDay]="currentDayClicked"
                                    (dayClicked)="dayClicked($event.day, $event.sourceEvent)"
                                    [refresh] = refresh
-                                   *ngSwitchCase="'month'"
                                    [locale]="locale"
                                    [weekStartsOn]="weekStartsOn"
                                    [excludeDays]=excludeDays
