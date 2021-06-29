@@ -1,17 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import {
-  CalendarDayViewComponent,
-  CalendarEventTimesChangedEvent,
-  CalendarMonthViewBeforeRenderEvent,
-  CalendarMonthViewDay,
-  CalendarView
-} from 'angular-calendar';
-import { CalendarEvent } from 'angular-calendar';
-import {getCalendar} from '@angular/material/datepicker/testing/datepicker-trigger-harness-base';
+import {CalendarEvent, CalendarMonthViewDay, CalendarView} from 'angular-calendar';
 import {Subject} from 'rxjs';
-import {analyzeAndValidateNgModules} from '@angular/compiler';
 
 registerLocaleData(localeEs);
 
@@ -44,6 +35,7 @@ export class CalendarComponent implements OnInit {
   currentHourClicked = new Date();
   view = CalendarView.Month;
   refresh: Subject<any> = new Subject();
+  CalendarView = CalendarView;
 
   events: CalendarEvent[] = [{
       title: 'Click me',
@@ -95,12 +87,14 @@ export class CalendarComponent implements OnInit {
   }
 
   changeToPreviousMonth(): void {
+    this.view = CalendarView.Day;
     this.viewDate.setMonth(this.viewDate.getMonth() - 1);
-    this.refresh.next();
+    this.view = CalendarView.Month;
   }
 
   changeToNextMonth(): void {
+    this.view = CalendarView.Day;
     this.viewDate.setMonth(this.viewDate.getMonth() + 1);
-    this.refresh.next();
+    this.view = CalendarView.Month;
   }
 }
