@@ -3,31 +3,26 @@
 </div>
 
 <div class="container">
-  <div class="row justify-content-evenly">
-    <div class = "col-3">
-      <button type="button" class="alert-primary" size="3x" ><i class="fas fa-angle-left" aria-hidden="true"></i></button>
+  <div class="row justify-content-center">
+    <div class="col-1 btn btn-primary" size="3x" id="buttonPrevious" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"><i class="fas fa-angle-left" aria-hidden="true"></i></div>
+    <div class = "col-5 text-center">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
     </div>
-    <div class = "col-2 text-center">
-      <h3>{{ currentDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
-    </div>
-    <div class = "col-3 text-right">
-      <button type="button" class="alert-primary" size="3x" ><i class="fas fa-angle-right" aria-hidden="true"></i></button>
-    </div>
+    <div class = "col-1 -align-left btn btn-primary" size="3x" id="buttonNext" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"><i class="fas fa-angle-right" aria-hidden="true"></i></div>
     <div class = "col-3 text-center">
       <h3 [hidden]="hiddenHours"> Escull hora per al dia {{currentDayClicked.getDate()}} </h3>
     </div>
-  </div>
+</div>
   <div [ngSwitch]="view">
     <div class="row justify-content-evenly">
 
       <div class = "col-8">
         <div class="cal-month-view">
           <mwl-calendar-month-view [events]="events"
-                                   [viewDate]="currentDate"
+                                   [viewDate]="viewDate"
                                    [activeDay]="currentDayClicked"
                                    (dayClicked)="dayClicked($event.day, $event.sourceEvent)"
                                    [refresh] = refresh
-                                   *ngSwitchCase="'month'"
                                    [locale]="locale"
                                    [weekStartsOn]="weekStartsOn"
                                    [excludeDays]=excludeDays
