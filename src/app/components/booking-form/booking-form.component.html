@@ -1,4 +1,4 @@
-<div class="container">
+<form id="form">
   <div class="mb-3 row justify-content-start">
 
     <div class="col-6">
@@ -8,7 +8,7 @@
 
     <div class="col-6">
       <label for="SurnamesVisit">Cognoms del sol·licitant</label>
-      <input type="text" class="form-control" id="SurnamesVisit" placeholder="cognoms del sol·licitant" required>
+      <input type="text" class="form-control" id="surnamesVisit" placeholder="cognoms del sol·licitant" required>
     </div>
 
   </div>
@@ -17,7 +17,7 @@
 
     <div class="col-6">
       <label for="SchoolVisit">Nom del centre</label>
-      <input type="text" class="form-control" id="SchoolVisit" placeholder="Nom del centre" required>
+      <input type="text" class="form-control" id="schoolVisit" placeholder="Nom del centre" required>
     </div>
 
   </div>
@@ -45,23 +45,24 @@
 
     <div class="col-6">
       <label for="NumVisit">Número d'assistents (Màxim 30 persones)</label>
-      <input type="number" class="form-control" id="NumVisit" placeholder="p.e. 25" required>
+      <input type="number" class="form-control" id="numVisit" placeholder="p.e. 25" required>
     </div>
 
     <div class="col-6">
       <label for="TypeVisit">Tipus d'assistents</label>
-      <select class="form-select" id="TypeVisit" required>
+      <select class="form-select" id="typeVisit" required>
         <option selected> Selecciona el tipus de visita </option>
         <option value="Batxillerat">Batxillerat</option>
         <option value="ESO">ESO</option>
-        <option value="Cicle mitjà">Cicle mitjà</option>
-        <option value="Cicle superior">Cicle superior</option>
-        <option value="Primària">Primària</option>
+        <option value="CicleMitja">Cicle mitjà</option>
+        <option value="CicleSuperior">Cicle superior</option>
+        <option value="Primaria">Primària</option>
         <option value="Universitat">Universitat</option>
         <option value="FIB">FIB</option>
-        <option value="Associació">Associació</option>
+        <option value="Associacio">Associació</option>
         <option value="Extranger">Extranger</option>
         <option value="Particular">Particular</option>
+        <option value="Altre">Altre</option>
       </select>
       <div class="invalid-feedback">
         Siusplau, selecciona un tipus de visita.
@@ -73,13 +74,13 @@
   <div class="mb-3 row justify-content-start">
     <div class="col-6">
       <label for="CommentVisit">Comentaris</label>
-      <textarea class="form-control" id="CommentVisit" placeholder="Afegeix algún comentari en cas necessàri."></textarea>
+      <textarea class="form-control" id="commentVisit" placeholder="Afegeix algún comentari en cas necessàri."></textarea>
     </div>
   </div>
+</form>
 
-  <div class="mb-3 row justify-content-center">
-    <button type="button" class="btn btn-primary btn-lg" id="submitButton">Reservar</button>
-  </div>
-
-
+<div class="mb-3 row justify-content-center">
+  <button (click)=sendBookingToBackend() class="btn btn-primary btn-lg" id="submitButton">Reservar</button>
 </div>
+
+
