@@ -3,8 +3,6 @@ import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import {CalendarEvent, CalendarMonthViewDay, CalendarView} from 'angular-calendar';
 import {Subject} from 'rxjs';
-import {DataService} from '../../data.service';
-import {BookingFormComponent} from '../booking-form/booking-form.component';
 
 registerLocaleData(localeEs);
 

@@ -13,6 +13,9 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BookingFormComponent } from './components/booking-form/booking-form.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ManagmentRequestsPageComponent } from './components/managment-requests-page/managment-requests-page.component';
+import {RouterModule, Routes} from '@angular/router';
+import {AppRoutingModule} from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,21 +24,23 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
     VisitaPageComponent,
     CalendarComponent,
-    BookingFormComponent
+    BookingFormComponent,
+    ManagmentRequestsPageComponent,
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     IconsModule,
     HttpClientModule,
-    CalendarModule.forRoot({
+    AppRoutingModule,
+    CalendarModule.forRoot({ // Necessary for calendar component
       provide: DateAdapter,
       useFactory: adapterFactory,
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
-
+  schemas: [NO_ERRORS_SCHEMA],
+  exports: [RouterModule]
 })
 export class AppModule { }
