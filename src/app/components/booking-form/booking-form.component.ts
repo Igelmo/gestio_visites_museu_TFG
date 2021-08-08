@@ -3,6 +3,7 @@ import {ApiService} from '../../api.service';
 import {Booking} from '../../datamodels/Booking';
 import {CalendarComponent} from '../calendar/calendar.component';
 import {Visitor} from '../../datamodels/Visitor';
+import {AssistantsType} from '../../datamodels/AssistantsType';
 
 @Component({
   selector: 'app-booking-form',
@@ -33,7 +34,7 @@ export class BookingFormComponent implements OnInit {
       this.currentHourClicked,
       visitor,
       (document.getElementById('numVisit') as HTMLInputElement).value,
-      (document.getElementById('typeVisit') as HTMLInputElement).value,
+      (document.getElementById('typeVisit') as HTMLInputElement).value as unknown as AssistantsType,
       (document.getElementById('commentVisit') as HTMLInputElement).value
     );
     return booking;

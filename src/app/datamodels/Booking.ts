@@ -1,5 +1,4 @@
 import {AssistantsType} from './AssistantsType';
-import {Time} from '@angular/common';
 import {Visitor} from './Visitor';
 
 export class Booking {
@@ -15,7 +14,7 @@ export class Booking {
     requestedHour: string,
     visitor: Visitor,
     assistants: string,
-    assistantsType: string,
+    assistantsType: AssistantsType,
     comments: string) {
     this.requestedDay = requestedDay;
     this.requestedHour = requestedHour;
@@ -25,7 +24,7 @@ export class Booking {
       num = 0;
     }
     this.assistants = num;
-    this.assistantsType = assistantsType as unknown as AssistantsType;
+    this.assistantsType = assistantsType;
     this.comments = comments;
   }
 
