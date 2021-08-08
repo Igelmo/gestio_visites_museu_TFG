@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild, ViewChildren} from '@angular/core';
 import {ApiService} from '../../api.service';
 import {Booking} from '../../datamodels/Booking';
+import {CalendarComponent} from '../calendar/calendar.component';
+import {Visitor} from '../../datamodels/Visitor';
 
 @Component({
   selector: 'app-booking-form',
@@ -9,17 +11,27 @@ import {Booking} from '../../datamodels/Booking';
 })
 export class BookingFormComponent implements OnInit {
   constructor(private apiService: ApiService) { }
+  @Input() currentDayClicked;
+  @Input() currentHourClicked;
 
   ngOnInit(): void {
   }
 
   createBooking(): Booking {
-    const booking = new Booking(
+    console.log(this.currentDayClicked);
+    console.log(this.currentHourClicked);
+
+    const visitor = new Visitor(
+      (document.getElementById('emailVisit') as HTMLInputElement).value,
       (document.getElementById('nameVisit') as HTMLInputElement).value,
       (document.getElementById('surnamesVisit')as HTMLInputElement).value,
-      (document.getElementById('schoolVisit') as HTMLInputElement).value,
-      (document.getElementById('emailVisit') as HTMLInputElement).value,
       (document.getElementById('phoneVisit') as HTMLInputElement).value,
+      (document.getElementById('schoolVisit') as HTMLInputElement).value,
+    );
+    const booking = new Booking(
+      this.currentDayClicked,
+      this.currentHourClicked,
+      visitor,
       (document.getElementById('numVisit') as HTMLInputElement).value,
       (document.getElementById('typeVisit') as HTMLInputElement).value,
       (document.getElementById('commentVisit') as HTMLInputElement).value
@@ -34,5 +46,7 @@ export class BookingFormComponent implements OnInit {
     );
     document.getElementById('nameVisit');
   }
+
+
 
 }

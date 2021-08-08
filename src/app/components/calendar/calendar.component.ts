@@ -3,6 +3,8 @@ import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import {CalendarEvent, CalendarMonthViewDay, CalendarView} from 'angular-calendar';
 import {Subject} from 'rxjs';
+import {DataService} from '../../data.service';
+import {BookingFormComponent} from '../booking-form/booking-form.component';
 
 registerLocaleData(localeEs);
 
@@ -15,11 +17,11 @@ const RED_CELL: 'mwl-calendar-month-cell' = 'mwl-calendar-month-cell';
   styleUrls: ['./calendar.component.css'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-
 })
+
 export class CalendarComponent implements OnInit {
   private colorCell: string;
-  constructor() { }
+  constructor() {  }
   currentDate = new Date();
   viewDate = new Date();
   locale = 'es';
@@ -36,14 +38,14 @@ export class CalendarComponent implements OnInit {
   view = CalendarView.Month;
   refresh: Subject<any> = new Subject();
   CalendarView = CalendarView;
-
   events: CalendarEvent[] = [{
       title: 'Click me',
       start: new Date(),
     }
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
   onDayEvent({ event }: { event: CalendarEvent }): void {
     console.log( event);
   }
@@ -97,4 +99,12 @@ export class CalendarComponent implements OnInit {
     this.viewDate.setMonth(this.viewDate.getMonth() + 1);
     this.view = CalendarView.Month;
   }
+  getDayClicked(): Date {
+    return this.currentDayClicked;
+  }
+
+  getHourClicked(): Date {
+    return this.currentHourClicked;
+  }
 }
+

@@ -1,28 +1,25 @@
 import {AssistantsType} from './AssistantsType';
+import {Time} from '@angular/common';
+import {Visitor} from './Visitor';
 
 export class Booking {
-  name: string;
-  surname: string;
-  center: string;
-  email: string;
-  phone: string;
+  requestedDay: string;
+  requestedHour: string;
+  visitor: Visitor;
   assistants: number;
   assistantsType: AssistantsType;
   comments: string;
 
-  constructor(name: string,
-              surname: string,
-              center: string,
-              email: string,
-              phone: string,
-              assistants: string,
-              assistantsType: string,
-              comments: string) {
-    this.name = name;
-    this.surname = surname;
-    this.center = center;
-    this.email = email;
-    this.phone = phone;
+  constructor(
+    requestedDay: string,
+    requestedHour: string,
+    visitor: Visitor,
+    assistants: string,
+    assistantsType: string,
+    comments: string) {
+    this.requestedDay = requestedDay;
+    this.requestedHour = requestedHour;
+    this.visitor = visitor;
     let num = parseInt(assistants, 10);
     if (isNaN(num)) {
       num = 0;
