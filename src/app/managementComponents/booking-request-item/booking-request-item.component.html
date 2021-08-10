@@ -1,0 +1,18 @@
+<ul class="listOfRequestedBookings">
+  <li *ngFor="let requestedBooking of listOfRequestedBookings"
+    [class.selected]="selectedRequestedBooking === requestedBooking"
+    (click)="onSelect(selectedRequestedBooking)">
+    <span class="badge">{{requestedBooking}}</span>
+  </li>
+</ul>
+
+<div *ngIf="selectedRequestedBooking ">
+
+  <h2>{{selectedRequestedBooking}} Details</h2>
+  <div><span>id: </span>{{selectedRequestedBooking}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="selectedRequestedBooking" placeholder="name">
+  </div>
+
+</div>

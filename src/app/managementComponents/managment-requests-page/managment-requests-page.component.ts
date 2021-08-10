@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class ManagmentRequestsPageComponent implements OnInit {
 
   constructor() {
-    console.log('Henlo bitxito mimitos');
   }
 
   ngOnInit(): void {

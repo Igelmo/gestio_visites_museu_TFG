@@ -13,9 +13,13 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BookingFormComponent } from './components/booking-form/booking-form.component';
 import {HttpClientModule} from '@angular/common/http';
-import { ManagmentRequestsPageComponent } from './components/managment-requests-page/managment-requests-page.component';
+import { ManagmentRequestsPageComponent } from './managementComponents/managment-requests-page/managment-requests-page.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AppRoutingModule} from '../app-routing.module';
+import { ManagementHeaderComponent } from './managementComponents/management-header/management-header.component';
+import { ManagementFooterComponent } from './managementComponents/management-footer/management-footer.component';
+import { BookingRequestItemComponent } from './managementComponents/booking-request-item/booking-request-item.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import {AppRoutingModule} from '../app-routing.module';
     CalendarComponent,
     BookingFormComponent,
     ManagmentRequestsPageComponent,
+    ManagementHeaderComponent,
+    ManagementFooterComponent,
+    BookingRequestItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,7 @@ import {AppRoutingModule} from '../app-routing.module';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

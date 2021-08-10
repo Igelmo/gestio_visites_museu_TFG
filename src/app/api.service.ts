@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
+import {Observable, pipe, throwError} from 'rxjs';
 import {Booking} from './datamodels/Booking';
-import {catchError} from 'rxjs/operators';
-import {error} from '@angular/compiler/src/util';
+import { map } from 'rxjs/operators';
+import {JsonObject} from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 
 class AnimeResponse {
   anime: string;
+}
+interface ResponseRequestedBookings {
+  results: Booking[];
 }
 
 @Injectable({
@@ -19,6 +22,10 @@ export class ApiService {
   // tslint:disable-next-line:typedef
   public getAnime() {
     return this.httpClient.get(this.baseUrl + 'response', {responseType: 'text'});
+  }
+
+  public getListOfRequestedBookings(): Observable<Booking[]> {
+    return this.httpClient.get<Booking[]>(this.baseUrl + 'requestedBookings');
   }
 
   /** POST: add a new booking to the database */
