@@ -1,5 +1,6 @@
 import {AssistantsType} from './AssistantsType';
 import {Visitor} from './Visitor';
+import {Observable} from 'rxjs';
 
 export class Booking {
   requestedDay: string;
@@ -27,5 +28,6 @@ export class Booking {
     this.assistantsType = assistantsType;
     this.comments = comments;
   }
+
 
 }

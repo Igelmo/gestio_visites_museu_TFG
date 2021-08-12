@@ -13,6 +13,17 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BookingFormComponent } from './components/booking-form/booking-form.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ManagmentRequestsPageComponent } from './managementComponents/managment-requests-page/managment-requests-page.component';
+import {RouterModule, Routes} from '@angular/router';
+import {AppRoutingModule} from '../app-routing.module';
+import { ManagementHeaderComponent } from './managementComponents/management-header/management-header.component';
+import { ManagementFooterComponent } from './managementComponents/management-footer/management-footer.component';
+import {
+  BookingRequestListComponent
+} from './managementComponents/booking-request-list/booking-request-list.component';
+import {FormsModule} from '@angular/forms';
+import {BookingRequestItemComponent} from './managementComponents/booking-request-item/booking-request-item.component';
+import { VisitInfoComponent } from './managementComponents/visit-info/visit-info.component';
 
 @NgModule({
   declarations: [
@@ -21,21 +32,30 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
     VisitaPageComponent,
     CalendarComponent,
-    BookingFormComponent
+    BookingFormComponent,
+
+    ManagmentRequestsPageComponent,
+    ManagementHeaderComponent,
+    ManagementFooterComponent,
+    BookingRequestListComponent,
+    BookingRequestItemComponent,
+    VisitInfoComponent,
   ],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     IconsModule,
     HttpClientModule,
-    CalendarModule.forRoot({
+    AppRoutingModule,
+    CalendarModule.forRoot({ // Necessary for calendar component
       provide: DateAdapter,
       useFactory: adapterFactory,
-    })
+    }),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
-
+  schemas: [NO_ERRORS_SCHEMA],
+  exports: [RouterModule]
 })
 export class AppModule { }
