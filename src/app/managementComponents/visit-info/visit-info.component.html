@@ -1,0 +1,61 @@
+<h1>Detalls de la visita demanada pel dia {{visitInfo.requestedDay}} a les {{visitInfo.requestedHour}}</h1>
+
+<div class="container align-items-center">
+  <div class="row" >
+    <div class="col-4 ">
+      <div class = "alert alert-secondary">
+        <h4> Nom del sol·licitant: </h4>
+        <h5> {{visitInfo.visitor.name}} </h5>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class = "alert alert-secondary">
+        <h4> Cognoms del sol·licitant:</h4>
+        <h5> {{visitInfo.visitor.surname}} </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class="col-4">
+      <div class = "alert alert-secondary">
+        <h4> Nom del centre: </h4>
+        <h5> {{visitInfo.visitor.center}} </h5>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class = "alert alert-secondary">
+        <h4> Número d'assistents:</h4>
+        <h5> {{visitInfo.assistants}} </h5>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class = "alert alert-secondary">
+        <h4> Tipus d'assistents: </h4>
+        <h5> {{visitInfo.assistantsType}} </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class="col-4">
+      <div class = "alert alert-secondary">
+        <h4> Email de contacte: </h4>
+        <h5> {{visitInfo.visitor.email}} </h5>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class = "alert alert-secondary">
+        <h4> Telèfon de contacte: </h4>
+        <h5> {{visitInfo.visitor.phone}} </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class = "alert alert-secondary">
+    <div class="col-4">
+      <h4> Comentaris realitzats: </h4>
+      <h5> {{visitInfo.comments}} </h5>
+    </div>
+  </div>
+</div>

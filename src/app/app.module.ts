@@ -18,8 +18,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppRoutingModule} from '../app-routing.module';
 import { ManagementHeaderComponent } from './managementComponents/management-header/management-header.component';
 import { ManagementFooterComponent } from './managementComponents/management-footer/management-footer.component';
-import { BookingRequestItemComponent } from './managementComponents/booking-request-item/booking-request-item.component';
+import {
+  BookingRequestListComponent
+} from './managementComponents/booking-request-list/booking-request-list.component';
 import {FormsModule} from '@angular/forms';
+import {BookingRequestItemComponent} from './managementComponents/booking-request-item/booking-request-item.component';
+import { VisitInfoComponent } from './managementComponents/visit-info/visit-info.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +33,13 @@ import {FormsModule} from '@angular/forms';
     VisitaPageComponent,
     CalendarComponent,
     BookingFormComponent,
+
     ManagmentRequestsPageComponent,
     ManagementHeaderComponent,
     ManagementFooterComponent,
+    BookingRequestListComponent,
     BookingRequestItemComponent,
+    VisitInfoComponent,
   ],
   imports: [
     BrowserModule,

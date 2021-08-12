@@ -1,0 +1,13 @@
+
+<ul class="listOfRequestedBookings">
+  <li *ngFor="let requestedBooking of listOfRequestedBookings"
+      [class.selected]="requestedBooking === selectedRequestedBooking"
+      (click)="onSelect(requestedBooking)">
+    <app-booking-request-item [requested]="requestedBooking"></app-booking-request-item>
+  </li>
+</ul>
+
+<div *ngIf="selectedRequestedBooking ">
+  <hr style="">
+  <app-visit-info [visitInfo]="selectedRequestedBooking"></app-visit-info>
+</div>
