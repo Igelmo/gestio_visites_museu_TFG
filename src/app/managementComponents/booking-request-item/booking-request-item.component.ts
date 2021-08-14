@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ApiService} from '../../api.service';
 
 @Component({
   selector: 'app-booking-request-item',
@@ -7,12 +8,19 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class BookingRequestItemComponent implements OnInit {
   @Input() requested;
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
   }
 
   acceptRequestedBooking(): void {}
-  denyRequestedBooking(): void {}
+  denyRequestedBooking(): void {
+    const res = this.apiService.removeRequestedBooking(this.requested.requestedDay.toLocaleString(),
+                                                       this.requested.requestedHour.toLocaleString());
+    res.subscribe(
+      data => console.log('asd'),
+      error => console.log(error)
+    );
+  }
 
 }
