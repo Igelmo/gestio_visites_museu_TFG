@@ -15,8 +15,7 @@ export class BookingRequestItemComponent implements OnInit {
 
   acceptRequestedBooking(): void {}
   denyRequestedBooking(): void {
-    const res = this.apiService.removeRequestedBooking(this.requested.requestedDay.toLocaleString(),
-                                                       this.requested.requestedHour.toLocaleString());
+    const res = this.apiService.removeRequestedBooking(this.requested.requestedDateTime.toLocaleString());
     res.subscribe(
       data => console.log('asd'),
       error => console.log(error)

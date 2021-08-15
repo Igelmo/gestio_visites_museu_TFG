@@ -34,7 +34,7 @@ export class ApiService {
     return this.httpClient.post<Booking>(this.baseUrl + 'bookings', booking, httpOptions);
   }
 
-  removeRequestedBooking(day: string, hour: string): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + 'requestedBookings/' + day + '/' + hour);
+  removeRequestedBooking(dateTime: string): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + 'requestedBookings/' + dateTime);
   }
 }

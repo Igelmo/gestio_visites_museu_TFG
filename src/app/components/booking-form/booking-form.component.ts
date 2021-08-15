@@ -11,8 +11,7 @@ import {AssistantsType} from '../../datamodels/AssistantsType';
 })
 export class BookingFormComponent implements OnInit {
   constructor(private apiService: ApiService) { }
-  @Input() currentDayClicked;
-  @Input() currentHourClicked;
+  @Input() currentDateTimeClicked;
 
   ngOnInit(): void {
   }
@@ -27,8 +26,7 @@ export class BookingFormComponent implements OnInit {
       (document.getElementById('schoolVisit') as HTMLInputElement).value,
     );
     return new Booking(
-      this.currentDayClicked,
-      this.currentHourClicked,
+      this.currentDateTimeClicked,
       visitor,
       (document.getElementById('numVisit') as HTMLInputElement).value,
       (document.getElementById('typeVisit') as HTMLInputElement).value as unknown as AssistantsType,

@@ -1,6 +1,7 @@
   <div class="row">
     <div class="col">
-      <span class="badge">{{requested.visitor.name}}</span> {{requested.requestedDay}} {{requested.requestedHour}}
+      <span class="badge">{{requested.visitor.name}}</span> {{requested.requestedDateTime.toLocaleString().split("T")[0]}}
+                                                            {{requested.requestedDateTime.toLocaleString().split("T")[1]}}
     </div>
     <button class="btn btn-success -pull-right" type="button" (click)="acceptRequestedBooking()">Acceptar</button>
     <button class="btn btn-danger -pull-right" type="button" (click)="denyRequestedBooking()">Denegar</button>
