@@ -1,7 +1,6 @@
-import {AfterViewInit, Component, Input, OnInit, ViewChild, ViewChildren} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ApiService} from '../../api.service';
 import {Booking} from '../../datamodels/Booking';
-import {CalendarComponent} from '../calendar/calendar.component';
 import {Visitor} from '../../datamodels/Visitor';
 import {AssistantsType} from '../../datamodels/AssistantsType';
 
@@ -12,15 +11,12 @@ import {AssistantsType} from '../../datamodels/AssistantsType';
 })
 export class BookingFormComponent implements OnInit {
   constructor(private apiService: ApiService) { }
-  @Input() currentDayClicked;
-  @Input() currentHourClicked;
+  @Input() currentDateTimeClicked;
 
   ngOnInit(): void {
   }
 
   createBooking(): Booking {
-    console.log(this.currentDayClicked);
-    console.log(this.currentHourClicked);
 
     const visitor = new Visitor(
       (document.getElementById('emailVisit') as HTMLInputElement).value,
@@ -29,15 +25,14 @@ export class BookingFormComponent implements OnInit {
       (document.getElementById('phoneVisit') as HTMLInputElement).value,
       (document.getElementById('schoolVisit') as HTMLInputElement).value,
     );
-    const booking = new Booking(
-      this.currentDayClicked,
-      this.currentHourClicked,
+    console.log(this.currentDateTimeClicked);
+    return new Booking(
+      this.currentDateTimeClicked,
       visitor,
       (document.getElementById('numVisit') as HTMLInputElement).value,
       (document.getElementById('typeVisit') as HTMLInputElement).value as unknown as AssistantsType,
       (document.getElementById('commentVisit') as HTMLInputElement).value
     );
-    return booking;
   }
   sendBookingToBackend(): void {
     const res = this.apiService.addBooking(this.createBooking());
@@ -45,7 +40,6 @@ export class BookingFormComponent implements OnInit {
       data => console.log('asd'),
       error => console.log(error)
     );
-    document.getElementById('nameVisit');
   }
 
 

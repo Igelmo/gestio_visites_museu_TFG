@@ -31,7 +31,10 @@ export class ApiService {
   /** POST: add a new booking to the database */
   addBooking(booking: Booking): Observable<Booking> {
     const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json'})};
-    console.log(booking);
     return this.httpClient.post<Booking>(this.baseUrl + 'bookings', booking, httpOptions);
+  }
+
+  removeRequestedBooking(dateTime: string): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + 'requestedBookings/' + dateTime);
   }
 }
