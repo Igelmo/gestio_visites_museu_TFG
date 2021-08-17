@@ -25,7 +25,6 @@ export class BookingFormComponent implements OnInit {
       (document.getElementById('phoneVisit') as HTMLInputElement).value,
       (document.getElementById('schoolVisit') as HTMLInputElement).value,
     );
-    console.log(this.currentDateTimeClicked);
     return new Booking(
       this.currentDateTimeClicked,
       visitor,
