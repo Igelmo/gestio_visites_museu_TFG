@@ -4,6 +4,7 @@ import {Observable, pipe, throwError} from 'rxjs';
 import {Booking} from './datamodels/Booking';
 import { map } from 'rxjs/operators';
 import {JsonObject} from '@angular/compiler-cli/ngcc/src/packages/entry_point';
+import {Visit} from './datamodels/Visit';
 
 class AnimeResponse {
   anime: string;
@@ -32,6 +33,11 @@ export class ApiService {
   addBooking(booking: Booking): Observable<Booking> {
     const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json'})};
     return this.httpClient.post<Booking>(this.baseUrl + 'bookings', booking, httpOptions);
+  }
+
+  addVisit(acceptRequested: Visit): Observable<Visit> {
+    const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json'})};
+    return this.httpClient.post<Visit>(this.baseUrl + 'visits', acceptRequested, httpOptions);
   }
 
   removeRequestedBooking(dateTime: string): Observable<any> {
