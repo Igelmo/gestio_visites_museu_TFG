@@ -4,5 +4,5 @@
       class="badge">{{visit.requestedBooking.visitor.name}}</span> {{visit.visitDateTime.toLocaleString().split("T")[0]}}
     {{visit.visitDateTime.toLocaleString().split("T")[1]}}
   </div>
-  <button (click)="denyRequestedBooking()" class="btn btn-danger -pull-right" type="button">Cancel·lar</button>
+  <button (click)="cancelVisit()" class="btn btn-danger -pull-right" type="button">Cancel·lar</button>
 </div>
