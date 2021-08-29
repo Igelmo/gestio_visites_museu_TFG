@@ -1,0 +1,64 @@
+<h1>Detalls de la visita demanada pel dia {{requestedBookingInfo.requestedDateTime.toLocaleString().split("T")[0]}} a
+  les
+  {{requestedBookingInfo.requestedDateTime.toLocaleString().split("T")[1]}}</h1>
+
+<div class="container align-items-center">
+  <div class="row">
+    <div class="col-4 ">
+      <div class="alert alert-secondary">
+        <h4> Nom del sol·licitant: </h4>
+        <h5> {{requestedBookingInfo.visitor.name}} </h5>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-secondary">
+        <h4> Cognoms del sol·licitant:</h4>
+        <h5> {{requestedBookingInfo.visitor.surname}} </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="alert alert-secondary">
+        <h4> Nom del centre: </h4>
+        <h5> {{requestedBookingInfo.visitor.center}} </h5>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-secondary">
+        <h4> Número d'assistents:</h4>
+        <h5> {{requestedBookingInfo.assistants}} </h5>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-secondary">
+        <h4> Tipus d'assistents: </h4>
+        <h5> {{requestedBookingInfo.assistantsType}} </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <div class="alert alert-secondary">
+        <h4> Email de contacte: </h4>
+        <h5> {{requestedBookingInfo.visitor.email}} </h5>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-secondary">
+        <h4> Telèfon de contacte: </h4>
+        <h5> {{requestedBookingInfo.visitor.phone}} </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-secondary">
+    <div class="col-4">
+      <h4> Comentaris realitzats: </h4>
+      <h5> {{requestedBookingInfo.comments}} </h5>
+    </div>
+  </div>
+
+</div>

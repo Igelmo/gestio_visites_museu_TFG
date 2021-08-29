@@ -1,0 +1,26 @@
+h1 {
+  color: grey;
+  font-weight: bold;
+  text-align: center;
+  margin: 100px;
+}
+
+h4 {
+  color: #16c79a;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-top: 30px;
+  padding-right: 30px;
+}
+
+h5 {
+  color: grey;
+  font-weight: bold;
+  padding-bottom: 10px;
+  padding-top: 30px;
+  padding-right: 30px;
+}
+
+.alert {
+  background-color: #eeeeee;
+}
