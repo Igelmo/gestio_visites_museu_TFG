@@ -29,6 +29,10 @@ export class ApiService {
     return this.httpClient.get<Booking[]>(this.baseUrl + 'requestedBookings');
   }
 
+  public getListOfPendingVisits(): Observable<Visit[]> {
+    return this.httpClient.get<Visit[]>(this.baseUrl + 'pendingVisits');
+  }
+
   /** POST: add a new booking to the database */
   addBooking(booking: Booking): Observable<Booking> {
     const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json'})};

@@ -1,0 +1,12 @@
+<ul class="listOfRequestedBookings">
+  <li (click)="onSelect(visit)"
+      *ngFor="let visit of listOfVisits"
+      [class.selected]="visit === selectedVisit">
+    <app-visit-item [visit]="visit"></app-visit-item>
+  </li>
+</ul>
+
+<div *ngIf="selectedVisit ">
+  <hr style="">
+  <app-visit-info [visitInfo]="selectedVisit"></app-visit-info>
+</div>

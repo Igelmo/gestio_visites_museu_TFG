@@ -13,11 +13,12 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <ul class="navbar-nav">
-          <li class="nav-item ">
+          <li [routerLinkActive]="['active']" class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1">INICI </a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-disabled="true" aria-expanded="false">
+          <li [routerLinkActive]="['active']" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button"
+               data-bs-toggle="dropdown" aria-disabled="true" aria-expanded="false">
               EL MUSEU
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -28,13 +29,14 @@
               <li><a class="dropdown-item" href="#">LA FIB</a></li>
             </ul>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="visites">VISITES </a>
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" routerLink="visits">VISITES </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink='apre/manage-requests' routerLinkActive='active' href="#" tabindex="-1" aria-disabled="true">DONACIONS</a>
+          <li [routerLinkActive]="['active']" class="nav-item">
+            <a class="nav-link" routerLink='apre/manage-requests' routerLinkActive='active' href="#" tabindex="-1"
+               aria-disabled="true">DONACIONS</a>
           </li>
-          <li class="nav-item">
+          <li [routerLinkActive]="['active']" class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">COM ARRIBAR</a>
           </li>
         </ul>
