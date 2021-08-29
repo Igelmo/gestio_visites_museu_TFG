@@ -1,13 +1,16 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 import {VisitaPageComponent} from './app/components/visita-page/visita-page.component';
 import {ManagmentRequestsPageComponent} from './app/managementComponents/managment-requests-page/managment-requests-page.component';
+import {ManagementVisitsPageComponent} from './app/managementComponents/management-visits-page/management-visits-page.component';
 
 const routes: Routes = [
-  { path: 'apre/manage_requests', component: ManagmentRequestsPageComponent },
-  { path: '', component: VisitaPageComponent},
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  {path: 'apre/manage_requests', component: ManagmentRequestsPageComponent},
+  {path: 'apre/home', component: ManagementVisitsPageComponent},
+  {path: 'visits', component: VisitaPageComponent},
+  {path: 'apre', redirectTo: 'apre/home', pathMatch: 'full'},
+  {path: '', redirectTo: 'visits', pathMatch: 'full'},
 ];
 
 @NgModule({
