@@ -20,8 +20,8 @@ export class VisitItemComponent implements OnInit {
     return new Visit(this.visit);
   }
 
-  denyRequestedBooking(): void {
-    const res = this.apiService.removeRequestedBooking(this.visit.requestedDateTime.toLocaleString());
+  cancelVisit(): void {
+    const res = this.apiService.removeVisit(this.visit.visitDateTime.toLocaleString());
     res.subscribe(
       data => console.log('asd'),
       error => console.log(error)
