@@ -1,0 +1,11 @@
+.badge {
+  font-size: large;
+  color: white;
+  margin: 10px;
+  background-color: #405061;
+}
+
+button {
+  display: flex;
+  margin: 10px 30px 10px 10px;
+}
