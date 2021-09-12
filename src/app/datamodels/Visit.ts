@@ -13,7 +13,7 @@ export class Visit {
     requestedBooking: Booking) {
     this.visitDateTime = requestedBooking.requestedDateTime;
     this.requestedBooking = requestedBooking;
-    this.guideEmail = 'guide@gmail.com';
+    this.guideEmail = 'guide@upc.edu'; // TODO: Canviar a que no estigui hardcodejat
     this.completed = false;
   }
 
