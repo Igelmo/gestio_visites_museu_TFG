@@ -9,6 +9,9 @@ const routes: Routes = [
   {path: 'apre/manage_requests', component: ManagmentRequestsPageComponent},
   {path: 'apre/home', component: ManagementVisitsPageComponent},
   {path: 'visits', component: VisitaPageComponent},
+
+  {path: 'apre/manage_requests', redirectTo: ''},
+  {path: 'apre/home', redirectTo: ''},
   {path: 'apre', redirectTo: 'apre/home', pathMatch: 'full'},
   {path: '', redirectTo: 'visits', pathMatch: 'full'},
 ];
