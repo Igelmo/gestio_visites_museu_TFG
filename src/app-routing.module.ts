@@ -12,6 +12,7 @@ const routes: Routes = [
 
   {path: 'apre/manage_requests', redirectTo: ''},
   {path: 'apre/home', redirectTo: ''},
+  {path: 'visits', redirectTo: ''},
   {path: 'apre', redirectTo: 'apre/home', pathMatch: 'full'},
   {path: '', redirectTo: 'visits', pathMatch: 'full'},
 ];
