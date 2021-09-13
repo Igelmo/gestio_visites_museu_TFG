@@ -16,7 +16,7 @@ interface ResponseRequestedBookings {
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'http://localhost:8080/';
+  baseUrl = 'https://backend-museu.herokuapp.com/';
   constructor(private httpClient: HttpClient) { }
 
   // tslint:disable-next-line:typedef
