@@ -1,6 +1,6 @@
   <div class="row">
     <div class="col">
-      <span class="badge">{{requested.visitor.name}}</span> {{requested.requestedDateTime.toLocaleString().split("T")[0]}}
+      <span class="badge">{{requested.visitor.center}}</span> {{requested.requestedDateTime.toLocaleString().split("T")[0]}}
                                                             {{requested.requestedDateTime.toLocaleString().split("T")[1]}}
     </div>
     <button class="btn btn-success -pull-right" type="button" (click)="acceptRequestedBooking()">Acceptar</button>

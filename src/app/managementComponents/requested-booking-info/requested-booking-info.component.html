@@ -7,13 +7,13 @@
     <div class="col-4 ">
       <div class="alert alert-secondary">
         <h4> Nom del sol·licitant: </h4>
-        <h5> {{requestedBookingInfo.visitor.name}} </h5>
+        <h5> {{requestedBookingInfo.visitor.person.name}} </h5>
       </div>
     </div>
     <div class="col-4">
       <div class="alert alert-secondary">
         <h4> Cognoms del sol·licitant:</h4>
-        <h5> {{requestedBookingInfo.visitor.surname}} </h5>
+        <h5> {{requestedBookingInfo.visitor.person.surname}} </h5>
       </div>
     </div>
   </div>
@@ -43,13 +43,13 @@
     <div class="col-4">
       <div class="alert alert-secondary">
         <h4> Email de contacte: </h4>
-        <h5> {{requestedBookingInfo.visitor.email}} </h5>
+        <h5> {{requestedBookingInfo.visitor.visitorEmail}} </h5>
       </div>
     </div>
     <div class="col-4">
       <div class="alert alert-secondary">
         <h4> Telèfon de contacte: </h4>
-        <h5> {{requestedBookingInfo.visitor.phone}} </h5>
+        <h5> {{requestedBookingInfo.visitor.person.phone}} </h5>
       </div>
     </div>
   </div>

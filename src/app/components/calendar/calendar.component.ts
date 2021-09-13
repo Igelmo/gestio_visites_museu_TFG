@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import {CalendarEvent, CalendarMonthViewDay, CalendarView} from 'angular-calendar';
@@ -18,6 +18,7 @@ const RED_CELL: 'mwl-calendar-month-cell' = 'mwl-calendar-month-cell';
 })
 
 export class CalendarComponent implements OnInit {
+  @ViewChild('myForm') form: ElementRef;
   private colorCell: string;
   constructor() {  }
   currentDate = new Date();
@@ -44,6 +45,7 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onDayEvent({ event }: { event: CalendarEvent }): void {
     console.log( event);
   }
@@ -65,6 +67,10 @@ export class CalendarComponent implements OnInit {
     }
     if (date <= this.currentDate) {
       this.hiddenBooking = true;
+    }
+    if (!this.hiddenBooking) {
+      scrollTo(this.form.nativeElement.getBoundingClientRect().x,
+            1500);
     }
     this.currentHourClicked = date;
   }
@@ -104,5 +110,6 @@ export class CalendarComponent implements OnInit {
   getHourClicked(): Date {
     return this.currentHourClicked;
   }
+
 }
 

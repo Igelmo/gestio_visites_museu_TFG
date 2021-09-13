@@ -13,8 +13,7 @@ export class BookingFormComponent implements OnInit {
   constructor(private apiService: ApiService) { }
   @Input() currentDateTimeClicked;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   createBooking(): Booking {
 

@@ -6,13 +6,13 @@
     <div class="col-4 ">
       <div class="alert alert-secondary">
         <h4> Nom del visitant: </h4>
-        <h5> {{visitInfo.requestedBooking.visitor.name}} </h5>
+        <h5> {{visitInfo.requestedBooking.visitor.person.name}} </h5>
       </div>
     </div>
     <div class="col-4">
       <div class="alert alert-secondary">
         <h4> Cognoms del visitant:</h4>
-        <h5> {{visitInfo.requestedBooking.visitor.surname}} </h5>
+        <h5> {{visitInfo.requestedBooking.visitor.person.surname}} </h5>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
     <div class="col-4">
       <div class = "alert alert-secondary">
         <h4> Nom del centre: </h4>
-        <h5> {{visitInfo.requestedBooking.center}} </h5>
+        <h5> {{visitInfo.requestedBooking.visitor.center}} </h5>
       </div>
     </div>
     <div class="col-4">
@@ -42,13 +42,13 @@
     <div class="col-4">
       <div class = "alert alert-secondary">
         <h4> Email de contacte: </h4>
-        <h5> {{visitInfo.requestedBooking.visitor.email}} </h5>
+        <h5> {{visitInfo.requestedBooking.visitor.visitorEmail}} </h5>
       </div>
     </div>
     <div class="col-4">
       <div class = "alert alert-secondary">
         <h4> Telèfon de contacte: </h4>
-        <h5> {{visitInfo.requestedBooking.visitor.phone}} </h5>
+        <h5> {{visitInfo.requestedBooking.visitor.person.phone}} </h5>
       </div>
     </div>
   </div>
