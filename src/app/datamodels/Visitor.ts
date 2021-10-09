@@ -1,19 +1,15 @@
+import {Person} from './Person';
+
 export class Visitor {
-  email: string;
-  name: string;
-  surname: string;
-  phone: string;
+  visitorEmail: string;
+  person: Person;
   center: string;
   constructor(
     email: string,
-    name: string,
-    surname: string,
-    phone: string,
+    person: Person,
     center: string) {
-    this.email = email;
-    this.name = name;
-    this.surname = surname;
-    this.phone = phone;
+    this.visitorEmail = email;
+    this.person = person;
     this.center = center;
   }
 }

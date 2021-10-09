@@ -3,6 +3,7 @@ import {ApiService} from '../../api.service';
 import {Booking} from '../../datamodels/Booking';
 import {Visitor} from '../../datamodels/Visitor';
 import {AssistantsType} from '../../datamodels/AssistantsType';
+import {Person} from '../../datamodels/Person';
 
 @Component({
   selector: 'app-booking-form',
@@ -16,12 +17,16 @@ export class BookingFormComponent implements OnInit {
   ngOnInit(): void { }
 
   createBooking(): Booking {
-
-    const visitor = new Visitor(
+    const person = new Person(
       (document.getElementById('emailVisit') as HTMLInputElement).value,
       (document.getElementById('nameVisit') as HTMLInputElement).value,
       (document.getElementById('surnamesVisit')as HTMLInputElement).value,
       (document.getElementById('phoneVisit') as HTMLInputElement).value,
+    );
+
+    const visitor = new Visitor(
+      (document.getElementById('emailVisit') as HTMLInputElement).value,
+      person,
       (document.getElementById('schoolVisit') as HTMLInputElement).value,
     );
     return new Booking(

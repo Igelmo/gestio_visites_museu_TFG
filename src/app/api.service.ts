@@ -4,25 +4,13 @@ import {Observable} from 'rxjs';
 import {Booking} from './datamodels/Booking';
 import {Visit} from './datamodels/Visit';
 
-class AnimeResponse {
-  anime: string;
-}
-
-interface ResponseRequestedBookings {
-  results: Booking[];
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'https://backend-museu.herokuapp.com/';
+//  baseUrl = 'https://backend-museu.herokuapp.com/';
+  baseUrl = 'http://localhost:8080/';
   constructor(private httpClient: HttpClient) { }
-
-  // tslint:disable-next-line:typedef
-  public getAnime() {
-    return this.httpClient.get(this.baseUrl + 'response', {responseType: 'text'});
-  }
 
   public getListOfRequestedBookings(): Observable<Booking[]> {
     return this.httpClient.get<Booking[]>(this.baseUrl + 'requestedBookings');
