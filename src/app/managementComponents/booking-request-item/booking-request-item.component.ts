@@ -1,6 +1,5 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ApiService} from '../../api.service';
-import {Booking} from '../../datamodels/Booking';
 import {Visit} from '../../datamodels/Visit';
 
 @Component({
@@ -21,20 +20,18 @@ export class BookingRequestItemComponent implements OnInit {
   }
 
   acceptRequestedBooking(): void {
-    const res = this.apiService.addVisit(this.createVisit());
-    res.subscribe(
+    this.apiService.addVisit(this.createVisit()).subscribe(
       data => console.log(data),
       error => console.log(error),
-      () => location.reload()
+      () => this.refreshBookingList()
     );
   }
 
   denyRequestedBooking(): void {
-    const res = this.apiService.removeRequestedBooking(this.requested.requestedDateTime.toLocaleString());
-    res.subscribe(
+    this.apiService.removeRequestedBooking(this.requested.requestedDateTime.toLocaleString()).subscribe(
       data => console.log(data),
       error => console.log(error),
-      () => location.reload()
+      () => this.refreshBookingList()
     );
   }
 

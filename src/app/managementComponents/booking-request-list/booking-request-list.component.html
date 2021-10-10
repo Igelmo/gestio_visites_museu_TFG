@@ -3,7 +3,7 @@
   <li *ngFor="let requestedBooking of listOfRequestedBookings"
       [class.selected]="requestedBooking === selectedRequestedBooking"
       (click)="onSelect(requestedBooking)">
-    <app-booking-request-item [requested]="requestedBooking"></app-booking-request-item>
+    <app-booking-request-item [requested]="requestedBooking" [refreshBookingList] = "refreshBookingList"></app-booking-request-item>
   </li>
 </ul>
 

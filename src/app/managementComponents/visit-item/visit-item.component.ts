@@ -9,6 +9,7 @@ import {Visit} from '../../datamodels/Visit';
 })
 export class VisitItemComponent implements OnInit {
   @Input() visit;
+  @Input() refreshVisitList: () => void;
 
   constructor(private apiService: ApiService) {
   }
@@ -21,13 +22,11 @@ export class VisitItemComponent implements OnInit {
   }
 
   cancelVisit(): void {
-    const res = this.apiService.removeVisit(this.visit.visitDateTime.toLocaleString());
-    res.subscribe(
+    this.apiService.removeVisit(this.visit.visitDateTime.toLocaleString()).subscribe(
       data => console.log(data),
       error => console.log(error),
-      () => location.reload()
+      () => this.refreshVisitList()
     );
-    location.reload();
   }
 
 }

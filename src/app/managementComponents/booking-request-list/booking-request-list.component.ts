@@ -19,6 +19,13 @@ export class BookingRequestListComponent implements OnInit {
     });
   }
 
+  refreshBookingList(): void {
+    this.apiService.getListOfRequestedBookings().subscribe(res => {
+      this.listOfRequestedBookings = res;
+      location.reload();
+    });
+  }
+
   onSelect(requestedBooking: Booking): void {
     this.selectedRequestedBooking = requestedBooking;
   }
