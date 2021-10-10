@@ -23,8 +23,9 @@ export class VisitItemComponent implements OnInit {
   cancelVisit(): void {
     const res = this.apiService.removeVisit(this.visit.visitDateTime.toLocaleString());
     res.subscribe(
-      data => console.log('asd'),
-      error => console.log(error)
+      data => console.log(data),
+      error => console.log(error),
+      () => location.reload()
     );
     location.reload();
   }

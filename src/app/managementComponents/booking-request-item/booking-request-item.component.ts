@@ -23,7 +23,7 @@ export class BookingRequestItemComponent implements OnInit {
   acceptRequestedBooking(): void {
     const res = this.apiService.addVisit(this.createVisit());
     res.subscribe(
-      data => console.log('asd'),
+      data => console.log(data),
       error => console.log(error),
       () => location.reload()
     );
@@ -32,7 +32,7 @@ export class BookingRequestItemComponent implements OnInit {
   denyRequestedBooking(): void {
     const res = this.apiService.removeRequestedBooking(this.requested.requestedDateTime.toLocaleString());
     res.subscribe(
-      data => this.refreshBookingList(),
+      data => console.log(data),
       error => console.log(error),
       () => location.reload()
     );
