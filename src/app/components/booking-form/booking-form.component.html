@@ -83,9 +83,13 @@
   <button (click)=sendBookingToBackend() class="btn btn-primary btn-lg" id="submitButton">Reservar</button>
 </div>
 
-<div class="alert alert-success -align-center" role="alert" id="alert">
-  {{result}}
+<div class="alert alert-success align-content-center" [hidden]="true" role="alert" id="alert">
+  La seva sol·licitud de reserva s'ha realitzat correctament.
+  Rebrà un correu quan s'accepti/denegui la seva sol·licitud.
 </div>
 
+<div class="alert alert-danger align-content-center" [hidden]="true" role="alert" id="alertError">
+  {{error}}
+</div>
 
 
