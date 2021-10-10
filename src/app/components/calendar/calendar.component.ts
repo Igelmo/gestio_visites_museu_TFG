@@ -68,11 +68,12 @@ export class CalendarComponent implements OnInit {
     if (date <= this.currentDate) {
       this.hiddenBooking = true;
     }
+    this.currentHourClicked = date;
+
     if (!this.hiddenBooking) {
       scrollTo(this.form.nativeElement.getBoundingClientRect().x,
-            1500);
+        1500);
     }
-    this.currentHourClicked = date;
   }
 
   refreshView(): void {
