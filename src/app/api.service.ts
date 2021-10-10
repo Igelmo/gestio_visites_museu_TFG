@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Booking} from './datamodels/Booking';
 import {Visit} from './datamodels/Visit';
@@ -21,9 +21,12 @@ export class ApiService {
   }
 
   /** POST: add a new booking to the database */
-  addBooking(booking: Booking): Observable<Booking> {
-    const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json'})};
-    return this.httpClient.post<Booking>(this.baseUrl + 'bookings', booking, httpOptions);
+  addBooking(booking: Booking): Observable<HttpResponse<string>> {
+    return this.httpClient.post(this.baseUrl + 'bookings', booking, {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      observe: 'response',
+      responseType: 'text'
+    });
   }
 
   addVisit(acceptRequested: Visit): Observable<Visit> {

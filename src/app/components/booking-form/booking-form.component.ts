@@ -13,7 +13,8 @@ import {Person} from '../../datamodels/Person';
 export class BookingFormComponent implements OnInit {
   constructor(private apiService: ApiService) { }
   @Input() currentDateTimeClicked;
-
+  result: string;
+  error: string;
   ngOnInit(): void { }
 
   createBooking(): Booking {
@@ -40,7 +41,7 @@ export class BookingFormComponent implements OnInit {
   sendBookingToBackend(): void {
     const res = this.apiService.addBooking(this.createBooking());
     res.subscribe(
-      data => console.log('asd'),
+      data => this.result = data.body,
       error => console.log(error)
     );
   }
