@@ -26,6 +26,7 @@ export class VisitItemComponent implements OnInit {
       data => console.log('asd'),
       error => console.log(error)
     );
+    location.reload();
   }
 
 }
