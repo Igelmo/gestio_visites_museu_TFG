@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ApiService} from '../../api.service';
-import {Booking} from '../../datamodels/Booking';
 import {Visit} from '../../datamodels/Visit';
 
 @Component({
@@ -10,6 +9,7 @@ import {Visit} from '../../datamodels/Visit';
 })
 export class BookingRequestItemComponent implements OnInit {
   @Input() requested;
+  @Input() refreshBookingList: () => void;
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
@@ -20,18 +20,18 @@ export class BookingRequestItemComponent implements OnInit {
   }
 
   acceptRequestedBooking(): void {
-    const res = this.apiService.addVisit(this.createVisit());
-    res.subscribe(
-      data => console.log('asd'),
-      error => console.log(error)
+    this.apiService.addVisit(this.createVisit()).subscribe(
+      data => console.log(data),
+      error => console.log(error),
+      () => this.refreshBookingList()
     );
   }
 
   denyRequestedBooking(): void {
-    const res = this.apiService.removeRequestedBooking(this.requested.requestedDateTime.toLocaleString());
-    res.subscribe(
-      data => console.log('asd'),
-      error => console.log(error)
+    this.apiService.removeRequestedBooking(this.requested.requestedDateTime.toLocaleString()).subscribe(
+      data => console.log(data),
+      error => console.log(error),
+      () => this.refreshBookingList()
     );
   }
 

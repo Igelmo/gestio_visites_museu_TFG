@@ -17,9 +17,13 @@ export class VisitsListComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.getListOfPendingVisits().subscribe(res => {
       this.listOfVisits = res;
-      this.listOfVisits.forEach(item => {
-        console.log(item);
-      });
+    });
+  }
+
+  refreshVisitList(): void {
+    this.apiService.getListOfPendingVisits().subscribe(res => {
+      this.listOfVisits = res;
+      location.reload();
     });
   }
 

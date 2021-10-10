@@ -2,7 +2,7 @@
   <li (click)="onSelect(visit)"
       *ngFor="let visit of listOfVisits"
       [class.selected]="visit === selectedVisit">
-    <app-visit-item [visit]="visit"></app-visit-item>
+    <app-visit-item [visit]="visit" [refreshVisitList] = "refreshVisitList"></app-visit-item>
   </li>
 </ul>
 

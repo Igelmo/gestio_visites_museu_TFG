@@ -1,28 +1,16 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Booking} from './datamodels/Booking';
 import {Visit} from './datamodels/Visit';
-
-class AnimeResponse {
-  anime: string;
-}
-
-interface ResponseRequestedBookings {
-  results: Booking[];
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'https://backend-museu.herokuapp.com/';
+//  baseUrl = 'https://backend-museu.herokuapp.com/';
+  baseUrl = 'http://localhost:8080/';
   constructor(private httpClient: HttpClient) { }
-
-  // tslint:disable-next-line:typedef
-  public getAnime() {
-    return this.httpClient.get(this.baseUrl + 'response', {responseType: 'text'});
-  }
 
   public getListOfRequestedBookings(): Observable<Booking[]> {
     return this.httpClient.get<Booking[]>(this.baseUrl + 'requestedBookings');
@@ -33,9 +21,12 @@ export class ApiService {
   }
 
   /** POST: add a new booking to the database */
-  addBooking(booking: Booking): Observable<Booking> {
-    const httpOptions = { headers: new HttpHeaders({'Content-Type':  'application/json'})};
-    return this.httpClient.post<Booking>(this.baseUrl + 'bookings', booking, httpOptions);
+  addBooking(booking: Booking): Observable<HttpResponse<string>> {
+    return this.httpClient.post(this.baseUrl + 'bookings', booking, {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      observe: 'response',
+      responseType: 'text'
+    });
   }
 
   addVisit(acceptRequested: Visit): Observable<Visit> {
