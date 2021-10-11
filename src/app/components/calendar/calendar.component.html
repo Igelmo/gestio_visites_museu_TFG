@@ -18,8 +18,7 @@
 
       <div class = "col-8">
         <div class="cal-month-view">
-          <mwl-calendar-month-view [events]="events"
-                                   [viewDate]="viewDate"
+          <mwl-calendar-month-view [viewDate]="viewDate"
                                    [activeDay]="currentDayClicked"
                                    (dayClicked)="dayClicked($event.day, $event.sourceEvent)"
                                    [refresh] = refresh

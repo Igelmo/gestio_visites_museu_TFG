@@ -37,11 +37,6 @@ export class CalendarComponent implements OnInit {
   view = CalendarView.Month;
   refresh: Subject<any> = new Subject();
   CalendarView = CalendarView;
-  events: CalendarEvent[] = [{
-      title: 'Click me',
-      start: new Date(),
-    }
-  ];
 
   ngOnInit(): void {
   }
