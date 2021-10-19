@@ -21,7 +21,6 @@ describe('BookingRequestItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookingRequestItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {

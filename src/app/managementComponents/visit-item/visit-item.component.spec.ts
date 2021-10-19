@@ -14,8 +14,8 @@ describe('VisitItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VisitItemComponent],
-      imports: [VisitsListComponent, VisitaPageComponent, RouterTestingModule, HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      declarations: [VisitItemComponent]
     })
       .compileComponents();
     httpClient = TestBed.inject(HttpClient);
@@ -24,7 +24,6 @@ describe('VisitItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(VisitItemComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
