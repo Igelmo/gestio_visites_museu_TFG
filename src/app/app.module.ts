@@ -1,4 +1,4 @@
-import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA, Pipe} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -63,3 +63,5 @@ import {VisitInfoComponent} from './managementComponents/visit-info/visit-info.c
   exports: [RouterModule]
 })
 export class AppModule { }
+
+
